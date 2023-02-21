@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <title>Document</title>
+    <link rel="stylesheet" href="./Assets/Css/style.css" />
+    <script src="https://code.jquery.com/jquery.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <br />
+        <h1>Cyrstall Collector</h1>
+      </div>
+      <div class="block">
+        <div class="head">Instructions</div>
+        <br />
+        <p>Try to reach the given point with the clicking crystal button</p>
+        <br />
+      </div>
+      <div class="block">
+        <div class="head">Target Score</div>
+        <span id="target"></span>
+      </div>
+      <div class="block">
+        <div class="head">Your Score</div>
+        <span id="score">0</span>
+      </div>
+      <div class="block">
+        <div class="head">Cyrstal Selection</div>
+
+        <button class="btn" data-value="3">
+          <img src="./Assets/Img/c1.svg" class="icon" />
+        </button>
+        <button class="btn" data-value="6">
+          <img src="./Assets/Img/c2.svg" class="icon" />
+        </button>
+        <button class="btn" data-value="4">
+          <img src="./Assets/Img/c3.svg" class="icon" />
+        </button>
+        <button class="btn" data-value="9">
+          <img src="./Assets/Img/c4.svg" class="icon" />
+        </button>
+      </div>
+      <div class="block">
+        <div class="head">Win Count</div>
+        <p id="wins">0</p>
+      </div>
+      <div class="block">
+        <div class="head">Loss Count</div>
+        <p id="losses">0</p>
+      </div>
+    </div>
+    <script>
+      function randomTarget() {
+        return Math.floor(Math.random() * (100 - 40) + 40);
+      }
+      var value = 0;
+      var winCount = 0;
+      var lossCount = 0;
+      let randNum = randomTarget();
+      $("#target").html(randNum);
+
+      $(".btn").on("click", function () {
+        if ($("#target").html() > value) {
+          value += parseInt(this.dataset.value);
+          $("#score").text(value);
+        }
+        if ($("#target").html() == value) {
+          value = 0;
+          winCount++;
+          randNum = randomTarget();
+          $("#score").text(value);
+          $("#target").html(randNum);
+          $("#wins").html(winCount);
+        }
+        if ($("#target").html() < value) {
+          value = 0;
+          lossCount++;
+          $("#losses").html(lossCount);
+          randNum = randomTarget();
+          $("#target").html(randNum);
+        }
+      });
+    </script>
+  </body>
+</html>
