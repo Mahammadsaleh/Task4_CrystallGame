@@ -8,7 +8,7 @@
       content="width=
     , initial-scale=1.0"
     />
-    <title>Document</title>
+    <title>Fell Like Cyrstall</title>
     <link rel="stylesheet" href="./Assets/Css/style.css" />
     <script src="https://code.jquery.com/jquery.js"></script>
   </head>
@@ -79,8 +79,7 @@
           $("#score").text(value);
           $("#target").html(randNum);
           $("#wins").html(winCount);
-        }
-        if ($("#target").html() < value) {
+        } else if ($("#target").html() < value) {
           value = 0;
           lossCount++;
           randNum = randomTarget();
