@@ -83,9 +83,10 @@
         if ($("#target").html() < value) {
           value = 0;
           lossCount++;
-          $("#losses").html(lossCount);
           randNum = randomTarget();
+          $("#score").text(value);
           $("#target").html(randNum);
+          $("#losses").html(lossCount);
         }
       });
     </script>
